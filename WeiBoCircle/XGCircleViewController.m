@@ -47,9 +47,8 @@
     Cell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleBlogCellIdentifier forIndexPath:indexPath];
     [cell updateWithModel:nil];
     cell.avatarTapped = ^ {
-        NSLog(@"点击头像！");
+        NSLog(@"点击用户头像！");
     };
-    
     return cell;
 }
 

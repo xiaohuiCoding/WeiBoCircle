@@ -93,7 +93,7 @@ typedef NS_ENUM(NSInteger, PictureType) {
     // 收藏
     self.collectButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self addSubview:self.collectButton];
-    [self.collectButton setImage:[self getPicture:UnCollectedIcon] forState:UIControlStateNormal];
+    self.collect = NO;
     [self.collectButton sizeToFit];
     [self.collectButton addTarget:self action:@selector(collectBlog) forControlEvents:UIControlEventTouchUpInside];
     [self.collectButton al_alignSuperRight:CommitTimeTopMargin];
@@ -102,27 +102,23 @@ typedef NS_ENUM(NSInteger, PictureType) {
 
 - (void)setUserInfo:(UserBasicInfo *)userInfo {
     
-    self.userInfo = userInfo;
-    [self updateWithUserInfo];
-    self.userId = self.userInfo.userId;
+    [self updateHeader];
+    self.userId = userInfo.userId;
 }
 
 - (void)setCollect:(BOOL)collect {
-    
-    self.collect = collect;
-    [self.collectButton setImage:(self.collect ? [self getPicture:CollectedIcon] : [self getPicture:UnCollectedIcon]) forState:UIControlStateNormal];
+    [self.collectButton setImage:(collect ? [self getPicture:CollectedIcon] : [self getPicture:UnCollectedIcon]) forState:UIControlStateNormal];
 }
 
-// 死数据更新
-- (void)updateWithDeadData {
+- (void)updateHeaderWithDeadData {
     
     [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:@"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"]];
     self.nameLabel.text = @"张三";
     self.commitTimeLabel.text = @"2017.4.6";
+    self.collect = YES;
 }
 
-// 服务器数据更新
-- (void)updateWithUserInfo {
+- (void)updateHeader {
 
     if (self.userInfo) {
         [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.userInfo.avatar]];
@@ -142,9 +138,13 @@ typedef NS_ENUM(NSInteger, PictureType) {
 
 // 收藏博文
 - (void)collectBlog {
-    
-    if (self.collectButtonClicked) {
-        self.collectButtonClicked();
+    NSLog(@"收藏或取消收藏！");
+    if (self.userId) {
+        if (self.collect) {
+            // 取消收藏
+        } else {
+            // 收藏
+        }
     }
 }
 

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (AutolayoutSetter)
+
 // 放在某一侧，相邻两条边的边距
 - (NSArray *)al_layLeftOf:(UIView *)view distance:(CGFloat)distance;
 - (NSArray *)al_layUponOf:(UIView *)view distance:(CGFloat)distance;
@@ -46,4 +47,5 @@
 - (void)al_setMaxHeight:(CGFloat)maxHeight;
 - (void)al_removeFromSuperview;
 - (void)al_removeConstraint:(NSLayoutAttribute)Attribute;
+
 @end

@@ -10,6 +10,7 @@
 #import "Masonry.h"
 
 @implementation UIView (AutolayoutSetter)
+
 - (NSArray *)al_layUponOf:(UIView *)view distance:(CGFloat)distance
 {
     if (view == nil) {
@@ -283,4 +284,5 @@
     }
     return mArray;
 }
+
 @end

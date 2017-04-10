@@ -29,7 +29,7 @@
 
 - (void)updateWithModel:(BaseModel *)baseModel {
     
-    [self.cellHeader updateWithDeadData];
+    [self.cellHeader updateHeaderWithDeadData];
 }
 
 //- (void)updateWithModel:(BaseModel *)baseModel {

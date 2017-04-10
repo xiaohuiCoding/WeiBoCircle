@@ -26,6 +26,6 @@ typedef void (^CollectButtonClicked)();
 @property (nonatomic, copy) AvatarTapped          avatarTapped;
 @property (nonatomic, copy) CollectButtonClicked  collectButtonClicked;
 
-- (void)updateWithDeadData;
+- (void)updateHeaderWithDeadData;
 
 @end
