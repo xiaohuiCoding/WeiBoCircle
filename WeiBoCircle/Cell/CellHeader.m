@@ -15,29 +15,11 @@
 
 typedef NS_ENUM(NSInteger, PictureType) {
     DefaultAvatar = 0, // 默认头像
-    UnCollectedIcon,   // 未收藏图标
-    CollectedIcon      // 已收藏图标
+    UnCollect,         // 未收藏
+    Collected          // 已收藏
 };
 
 @implementation CellHeader
-
-- (UIImage *)getPicture:(PictureType)type {
-    
-    switch (type) {
-            
-        case DefaultAvatar:
-            return [UIImage imageNamed:@""];
-            
-        case UnCollectedIcon:
-            return [UIImage imageNamed:@"unCollected"];
-            
-        case CollectedIcon:
-            return [UIImage imageNamed:@"collected"];
-            
-        default:
-            return [UIImage imageNamed:@""];
-    }
-}
 
 - (instancetype)initWithFrame:(CGRect)frame {
     
@@ -50,10 +32,12 @@ typedef NS_ENUM(NSInteger, PictureType) {
 
 - (void)initSubviews {
     
+    self.collect = NO; //
+    
     // 头像
     self.avatarImageView = [[UIImageView alloc] init];
     [self addSubview:self.avatarImageView];
-    self.avatarImageView.image = [self getPicture:DefaultAvatar];
+    self.avatarImageView.image = [self selectPictureWithType:DefaultAvatar];
     [self.avatarImageView al_alignSuperLeft:AvatarLeftMargin];
     [self.avatarImageView al_alignSuperVerticalCenter];
     [self.avatarImageView al_setSize:CGSizeMake(AvatarWidth, AvatarWidth)];
@@ -98,6 +82,21 @@ typedef NS_ENUM(NSInteger, PictureType) {
     [self.collectButton al_alignSuperVerticalCenter];
 }
 
+- (UIImage *)selectPictureWithType:(PictureType)type {
+    
+    switch (type) {
+            
+        case DefaultAvatar:
+            return [UIImage imageNamed:@"default_avatar"];
+            
+        case UnCollect:
+            return [UIImage imageNamed:@"unCollected"];
+            
+        case Collected:
+            return [UIImage imageNamed:@"collected"];
+    }
+}
+
 - (void)setUserInfo:(UserBasicInfo *)userInfo {
     
     [self updateHeader];
@@ -105,7 +104,7 @@ typedef NS_ENUM(NSInteger, PictureType) {
 }
 
 - (void)setCollect:(BOOL)collect {
-    [self.collectButton setImage:(collect ? [self getPicture:CollectedIcon] : [self getPicture:UnCollectedIcon]) forState:UIControlStateNormal];
+    [self.collectButton setImage:(collect ? [self selectPictureWithType:Collected] : [self selectPictureWithType:UnCollect]) forState:UIControlStateNormal];
 }
 
 - (void)updateHeaderWithDeadData {
