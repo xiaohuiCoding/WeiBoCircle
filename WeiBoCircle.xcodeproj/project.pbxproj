@@ -35,6 +35,7 @@
 		4BB73C811E9B225F001CBB33 /* UILabel+SomeCalculate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB73C6A1E9B225F001CBB33 /* UILabel+SomeCalculate.m */; };
 		4BB73C821E9B225F001CBB33 /* UIView+AutolayoutSetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB73C6C1E9B225F001CBB33 /* UIView+AutolayoutSetter.m */; };
 		4BB73C831E9B225F001CBB33 /* XGCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB73C6E1E9B225F001CBB33 /* XGCircleViewController.m */; };
+		4BB73C851E9BA6EF001CBB33 /* avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BB73C841E9BA6EF001CBB33 /* avatar.png */; };
 		534F7E15589A73B00DB52DE3 /* libPods-WeiBoCircle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD45F85369F6BEC721CCB276 /* libPods-WeiBoCircle.a */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +114,7 @@
 		4BB73C6C1E9B225F001CBB33 /* UIView+AutolayoutSetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AutolayoutSetter.m"; sourceTree = "<group>"; };
 		4BB73C6D1E9B225F001CBB33 /* XGCircleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGCircleViewController.h; sourceTree = "<group>"; };
 		4BB73C6E1E9B225F001CBB33 /* XGCircleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGCircleViewController.m; sourceTree = "<group>"; };
+		4BB73C841E9BA6EF001CBB33 /* avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar.png; sourceTree = "<group>"; };
 		BD45F85369F6BEC721CCB276 /* libPods-WeiBoCircle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeiBoCircle.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -220,22 +222,22 @@
 			children = (
 				4BB73C431E9B225F001CBB33 /* Cell.h */,
 				4BB73C441E9B225F001CBB33 /* Cell.m */,
-				4BB73C451E9B225F001CBB33 /* CellFooter.h */,
-				4BB73C461E9B225F001CBB33 /* CellFooter.m */,
 				4BB73C471E9B225F001CBB33 /* CellHeader.h */,
 				4BB73C481E9B225F001CBB33 /* CellHeader.m */,
 				4BB73C491E9B225F001CBB33 /* CellImageContent.h */,
 				4BB73C4A1E9B225F001CBB33 /* CellImageContent.m */,
-				4BB73C4B1E9B225F001CBB33 /* CellResponseButton.h */,
-				4BB73C4C1E9B225F001CBB33 /* CellResponseButton.m */,
-				4BB73C4D1E9B225F001CBB33 /* CellSummary.h */,
-				4BB73C4E1E9B225F001CBB33 /* CellSummary.m */,
 				4BB73C4F1E9B225F001CBB33 /* CellVideoContent.h */,
 				4BB73C501E9B225F001CBB33 /* CellVideoContent.m */,
-				4BB73C511E9B225F001CBB33 /* ImageCell.h */,
-				4BB73C521E9B225F001CBB33 /* ImageCell.m */,
+				4BB73C4D1E9B225F001CBB33 /* CellSummary.h */,
+				4BB73C4E1E9B225F001CBB33 /* CellSummary.m */,
+				4BB73C4B1E9B225F001CBB33 /* CellResponseButton.h */,
+				4BB73C4C1E9B225F001CBB33 /* CellResponseButton.m */,
+				4BB73C451E9B225F001CBB33 /* CellFooter.h */,
+				4BB73C461E9B225F001CBB33 /* CellFooter.m */,
 				4BB73C531E9B225F001CBB33 /* SimpleCell.h */,
 				4BB73C541E9B225F001CBB33 /* SimpleCell.m */,
+				4BB73C511E9B225F001CBB33 /* ImageCell.h */,
+				4BB73C521E9B225F001CBB33 /* ImageCell.m */,
 				4BB73C551E9B225F001CBB33 /* VideoCell.h */,
 				4BB73C561E9B225F001CBB33 /* VideoCell.m */,
 			);
@@ -260,6 +262,7 @@
 		4BB73C621E9B225F001CBB33 /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				4BB73C841E9BA6EF001CBB33 /* avatar.png */,
 				4BB73C631E9B225F001CBB33 /* collected.png */,
 				4BB73C641E9B225F001CBB33 /* unCollected.png */,
 			);
@@ -403,6 +406,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BB73C851E9BA6EF001CBB33 /* avatar.png in Resources */,
 				4BB73C1F1E9B2203001CBB33 /* LaunchScreen.storyboard in Resources */,
 				4BB73C1C1E9B2203001CBB33 /* Assets.xcassets in Resources */,
 				4BB73C1A1E9B2203001CBB33 /* Main.storyboard in Resources */,

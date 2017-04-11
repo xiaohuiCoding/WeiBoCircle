@@ -10,7 +10,9 @@
 
 @implementation Cell
 
-- (void)updateWithModel:(BaseModel *)model {}
+- (void)updateWithModel:(BaseModel *)model {
+    // 空实现
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

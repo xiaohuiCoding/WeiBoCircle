@@ -63,7 +63,7 @@ typedef NS_ENUM(NSInteger, PictureType) {
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showUserHomePage)];
     [self.avatarImageView addGestureRecognizer:tap];
     
-    
+    // 名字
     UILabel *lb1 = [[UILabel alloc] init];
     lb1.font = [UIFont systemFontOfSize:14.0];
     lb1.text = @"测";
@@ -74,7 +74,6 @@ typedef NS_ENUM(NSInteger, PictureType) {
     
     CGFloat nameLabelTopMargin = (CellHeaderHeight - lb1.finalHeight - CommitTimeTopMargin - lb2.finalHeight) / 2;
     
-    // 名字
     self.nameLabel = [[UILabel alloc] init];
     [self addSubview:self.nameLabel];
     self.nameLabel.font = [UIFont systemFontOfSize:14.0];
@@ -93,7 +92,6 @@ typedef NS_ENUM(NSInteger, PictureType) {
     // 收藏
     self.collectButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self addSubview:self.collectButton];
-    self.collect = NO;
     [self.collectButton sizeToFit];
     [self.collectButton addTarget:self action:@selector(collectBlog) forControlEvents:UIControlEventTouchUpInside];
     [self.collectButton al_alignSuperRight:CommitTimeTopMargin];
@@ -112,10 +110,10 @@ typedef NS_ENUM(NSInteger, PictureType) {
 
 - (void)updateHeaderWithDeadData {
     
-    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:@"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"]];
-    self.nameLabel.text = @"张三";
-    self.commitTimeLabel.text = @"2017.4.6";
-    self.collect = YES;
+    self.avatarImageView.image = [UIImage imageNamed:@"avatar"];
+    self.nameLabel.text = @"小A";
+    self.commitTimeLabel.text = @"2017.4.5";
+    self.collect = NO;
 }
 
 - (void)updateHeader {
