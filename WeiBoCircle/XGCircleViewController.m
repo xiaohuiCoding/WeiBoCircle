@@ -40,12 +40,12 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 200;
+    return 120;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     Cell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleBlogCellIdentifier forIndexPath:indexPath];
-    [cell updateWithModel:nil];
+    [cell updateCellWithModel:nil];
     cell.avatarTapped = ^ {
         NSLog(@"点击用户头像！");
     };

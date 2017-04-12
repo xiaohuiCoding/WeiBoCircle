@@ -8,9 +8,11 @@
 
 #import "Cell.h"
 #import "CellHeader.h"
+#import "CellFooter.h"
 
 @interface SimpleCell : Cell
 
 @property (nonatomic, strong) CellHeader *cellHeader;
+@property (nonatomic, strong) CellFooter *cellFooter;
 
 @end

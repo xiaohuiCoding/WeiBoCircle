@@ -11,12 +11,16 @@
 
 typedef void (^AvatarTapped)();
 typedef void (^CollectButtonClicked)();
+typedef void (^LikeButtonClicked)();
+typedef void (^CommentButtonClicked)();
 
 @interface Cell : UITableViewCell
 
-@property (nonatomic, copy) AvatarTapped          avatarTapped;
-@property (nonatomic, copy) CollectButtonClicked  collectButtonClicked;
+@property (nonatomic, copy) AvatarTapped         avatarTapped;
+@property (nonatomic, copy) CollectButtonClicked collectButtonClicked;
+@property (nonatomic, copy) LikeButtonClicked    likeButtonClicked;
+@property (nonatomic, copy) CommentButtonClicked commentButtonClicked;
 
-- (void)updateWithModel:(BaseModel *)baseModel;
+- (void)updateCellWithModel:(BaseModel *)baseModel;
 
 @end

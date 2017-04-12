@@ -23,4 +23,6 @@ typedef NS_ENUM(NSInteger, PictureType) {
 @property (nonatomic, assign) BOOL isLike;
 @property (nonatomic, assign) int  amount;
 
+- (instancetype)initWithFrame:(CGRect)frame pictureType:(PictureType)type;
+
 @end

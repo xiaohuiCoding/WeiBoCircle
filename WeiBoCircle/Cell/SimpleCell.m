@@ -10,6 +10,9 @@
 #import "LastestModel.h"
 #import "VideoModel.h"
 
+#define CellFooterHeight     80
+#define ResponseButtonHeight 40
+
 @implementation SimpleCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -23,16 +26,25 @@
 
 - (void)initSubviews {
     
-    self.cellHeader = [[CellHeader alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 80)];
+    // header
+    self.cellHeader = [[CellHeader alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, CellFooterHeight)];
     [self addSubview:self.cellHeader];
-}
-
-- (void)updateWithModel:(BaseModel *)baseModel {
     
-    [self.cellHeader updateHeaderWithDeadData];
+    // footer
+    self.cellFooter = [[CellFooter alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, ResponseButtonHeight)];
+    [self addSubview:self.cellFooter];
+    [self.cellFooter al_setSize:self.cellFooter.frame.size];
+    [self.cellFooter al_alignSuperHorizontalCenter];
+    [self.cellFooter al_layBelowOf:self.cellHeader distance:0];
 }
 
-//- (void)updateWithModel:(BaseModel *)baseModel {
+- (void)updateCellWithModel:(BaseModel *)baseModel {
+    
+    [self.cellHeader updateHeader];
+    [self.cellFooter updateFooter];
+}
+
+//- (void)updateCellWithModel:(BaseModel *)baseModel {
 //    
 //    LastestModel *lastestModel = (LastestModel *)baseModel;
 //    if (lastestModel) {
@@ -48,11 +60,23 @@
 //}
 
 - (void)setAvatarTapped:(AvatarTapped)avatarTapped {
+    
     self.cellHeader.avatarTapped = avatarTapped;
 }
 
 - (void)setCollectButtonClicked:(CollectButtonClicked)collectButtonClicked {
+    
     self.cellHeader.collectButtonClicked = collectButtonClicked;
+}
+
+- (void)setLikeButtonClicked:(LikeButtonClicked)likeButtonClicked {
+    
+    self.cellFooter.likeButtonClicked = likeButtonClicked;
+}
+
+- (void)setCommentButtonClicked:(CommentButtonClicked)commentButtonClicked {
+    
+    self.cellFooter.commentButtonClicked = commentButtonClicked;
 }
 
 @end

@@ -19,13 +19,13 @@ typedef void (^CollectButtonClicked)();
 @property (nonatomic, strong) UILabel     *commitTimeLabel;
 @property (nonatomic, strong) UIButton    *collectButton;
 
+@property (nonatomic, copy) AvatarTapped         avatarTapped;
+@property (nonatomic, copy) CollectButtonClicked collectButtonClicked;
+
 @property (nonatomic, strong) NSString      *userId;
 @property (nonatomic, strong) UserBasicInfo *userInfo;
 @property (nonatomic, assign) BOOL          collect;
 
-@property (nonatomic, copy) AvatarTapped          avatarTapped;
-@property (nonatomic, copy) CollectButtonClicked  collectButtonClicked;
-
-- (void)updateHeaderWithDeadData;
+- (void)updateHeader;
 
 @end

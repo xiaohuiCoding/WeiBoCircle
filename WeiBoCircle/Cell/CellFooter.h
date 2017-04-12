@@ -7,7 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CellResponseButton.h"
+
+typedef void (^LikeButtonClicked)();
+typedef void (^CommentButtonClicked)();
 
 @interface CellFooter : UIView
+
+@property (nonatomic, strong) CellResponseButton *likeButton;
+@property (nonatomic, strong) CellResponseButton *commentButton;
+
+@property (nonatomic, copy) LikeButtonClicked    likeButtonClicked;
+@property (nonatomic, copy) CommentButtonClicked commentButtonClicked;
+
+@property (nonatomic, assign) BOOL isLike;
+@property (nonatomic, assign) int  amount;
+
+- (void)updateFooter;
 
 @end

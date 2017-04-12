@@ -10,14 +10,13 @@
 
 @implementation Cell
 
-- (void)updateWithModel:(BaseModel *)model {
-    // 空实现
+- (void)updateCellWithModel:(BaseModel *)model {
+    // empty implementation
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    //选中cell后无样式变化
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 

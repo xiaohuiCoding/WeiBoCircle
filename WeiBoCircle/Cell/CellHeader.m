@@ -35,17 +35,17 @@ typedef NS_ENUM(NSInteger, PictureType) {
     self.collect = NO; //
     
     // 头像
-    self.avatarImageView = [[UIImageView alloc] init];
-    [self addSubview:self.avatarImageView];
+    self.avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, AvatarWidth, AvatarWidth)];
     self.avatarImageView.image = [self selectPictureWithType:DefaultAvatar];
-    [self.avatarImageView al_alignSuperLeft:AvatarLeftMargin];
-    [self.avatarImageView al_alignSuperVerticalCenter];
-    [self.avatarImageView al_setSize:CGSizeMake(AvatarWidth, AvatarWidth)];
     self.avatarImageView.layer.cornerRadius = 10;
     self.avatarImageView.layer.masksToBounds = YES;
     self.avatarImageView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showUserHomePage)];
     [self.avatarImageView addGestureRecognizer:tap];
+    [self addSubview:self.avatarImageView];
+    [self.avatarImageView al_alignSuperLeft:AvatarLeftMargin];
+    [self.avatarImageView al_alignSuperVerticalCenter];
+    [self.avatarImageView al_setSize:self.avatarImageView.frame.size];
     
     // 名字
     UILabel *lb1 = [[UILabel alloc] init];
@@ -59,25 +59,25 @@ typedef NS_ENUM(NSInteger, PictureType) {
     CGFloat nameLabelTopMargin = (CellHeaderHeight - lb1.finalHeight - CommitTimeTopMargin - lb2.finalHeight) / 2;
     
     self.nameLabel = [[UILabel alloc] init];
-    [self addSubview:self.nameLabel];
     self.nameLabel.font = [UIFont systemFontOfSize:14.0];
+    [self addSubview:self.nameLabel];
     [self.nameLabel al_layRightOf:self.avatarImageView distance:AvatarLeftMargin];
     [self.nameLabel al_alignSuperUpon:nameLabelTopMargin];
     [self.nameLabel al_setMaxWidth:[[UIScreen mainScreen] bounds].size.width / 2];
     
     // 提交时间
     self.commitTimeLabel = [[UILabel alloc] init];
-    [self addSubview:self.commitTimeLabel];
     self.commitTimeLabel.font = [UIFont systemFontOfSize:11.0];
     self.commitTimeLabel.textColor = [UIColor lightGrayColor];
+    [self addSubview:self.commitTimeLabel];
     [self.commitTimeLabel al_layRightOf:self.avatarImageView distance:AvatarLeftMargin];
     [self.commitTimeLabel al_layBelowOf:self.nameLabel distance:CommitTimeTopMargin];
     
     // 收藏
     self.collectButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self addSubview:self.collectButton];
     [self.collectButton sizeToFit];
     [self.collectButton addTarget:self action:@selector(collectBlog) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:self.collectButton];
     [self.collectButton al_alignSuperRight:CommitTimeTopMargin];
     [self.collectButton al_alignSuperVerticalCenter];
 }
@@ -104,10 +104,11 @@ typedef NS_ENUM(NSInteger, PictureType) {
 }
 
 - (void)setCollect:(BOOL)collect {
+    
     [self.collectButton setImage:(collect ? [self selectPictureWithType:Collected] : [self selectPictureWithType:UnCollect]) forState:UIControlStateNormal];
 }
 
-- (void)updateHeaderWithDeadData {
+- (void)updateHeader {
     
     self.avatarImageView.image = [UIImage imageNamed:@"avatar"];
     self.nameLabel.text = @"小A";
@@ -115,15 +116,15 @@ typedef NS_ENUM(NSInteger, PictureType) {
     self.collect = NO;
 }
 
-- (void)updateHeader {
-
-    if (self.userInfo) {
-        [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.userInfo.avatar]];
-        self.nameLabel.text = self.userInfo.name;
-        self.commitTimeLabel.text = self.userInfo.commitTime;
-//        self.collect = model.collect;
-    }
-}
+//- (void)updateHeader {
+//
+//    if (self.userInfo) {
+//        [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.userInfo.avatar]];
+//        self.nameLabel.text = self.userInfo.name;
+//        self.commitTimeLabel.text = self.userInfo.commitTime;
+////        self.collect = model.collect;
+//    }
+//}
 
 // 展示用户主页
 - (void)showUserHomePage {
@@ -135,7 +136,9 @@ typedef NS_ENUM(NSInteger, PictureType) {
 
 // 收藏博文
 - (void)collectBlog {
+    
     NSLog(@"收藏或取消收藏！");
+    
     if (self.userId) {
         if (self.collect) {
             // 取消收藏

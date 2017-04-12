@@ -8,25 +8,48 @@
 
 #import "CellResponseButton.h"
 
+#define CustomImageViewRightMargin 10
+#define ResponseButtonHeight       40
+
 @implementation CellResponseButton
 
-- (instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame pictureType:(PictureType)type {
     
     self = [super initWithFrame:frame];
     if (self) {
-        [self initSubviewsWithPictureWithType:self.picType];
+        
+        self.isLike = NO; //
+        self.amount = 0;  //
+        
+        self.picType = type;
+        
+        // 数量
+        self.amountLabel = [[UILabel alloc] init];
+        self.amountLabel.font = [UIFont systemFontOfSize:12.0];
+        self.amountLabel.textColor = [UIColor lightGrayColor];
+        [self addSubview:self.amountLabel];
+        [self.amountLabel al_alignSuperRight:0];
+        [self.amountLabel al_alignSuperVerticalCenter];
+        
+        // 图标
+        self.customImageView = [[UIImageView alloc] init];
+        self.customImageView.image = [self selectNormalPicture];
+        [self.customImageView sizeToFit];
+        [self.customImageView al_setSize:self.customImageView.frame.size];
+        [self addSubview:self.customImageView];
+        [self.customImageView al_layLeftOf:self.amountLabel distance:CustomImageViewRightMargin];
+        [self.customImageView al_alignSuperVerticalCenter];
+        
+        self.amountLabel.text = @"0";
+        [self reSetResponseButtonWidth];
     }
     return self;
 }
 
-- (void)initSubviewsWithPictureWithType:(PictureType)type {
+- (void)reSetResponseButtonWidth {
     
-    self.isLike = NO; //
-    self.amount = 0;  //
-    
-    self.
-    
-    self.customImageView = [[UIImageView alloc] init];
+    [self.amountLabel sizeToFit];
+    [self al_setSize:CGSizeMake(self.amountLabel.finalWidth + CustomImageViewRightMargin + self.customImageView.frame.size.width, ResponseButtonHeight)];
 }
 
 - (UIImage *)selectNormalPicture {
@@ -68,6 +91,13 @@
     }
 }
 
+- (void)setAmount:(int)amount {
+    
+    self.amountLabel.text = (amount == 0) ? [self selectPlaceholderText] : [NSString stringWithFormat:@"%d", amount];
+    
+    [self reSetResponseButtonWidth];
+}
+
 - (void)setIsLike:(BOOL)isLike {
     
     switch (self.picType) {
@@ -80,47 +110,5 @@
             break;
     }
 }
-
-- (void)setAmount:(int)amount {
-    self.amountLabel.text = self.amount == 0 ? [self selectPlaceholderText] : [NSString stringWithFormat:@"%d", self.amount];
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @end
