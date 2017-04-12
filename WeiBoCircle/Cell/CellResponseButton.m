@@ -8,9 +8,6 @@
 
 #import "CellResponseButton.h"
 
-#define CustomImageViewRightMargin 10
-#define ResponseButtonHeight       40
-
 @implementation CellResponseButton
 
 - (instancetype)initWithFrame:(CGRect)frame pictureType:(PictureType)type {
@@ -24,21 +21,21 @@
         self.picType = type;
         
         // 数量
-        self.amountLabel = [[UILabel alloc] init];
+        self.amountLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.amountLabel.font = [UIFont systemFontOfSize:12.0];
         self.amountLabel.textColor = [UIColor lightGrayColor];
         [self addSubview:self.amountLabel];
         [self.amountLabel al_alignSuperRight:0];
         [self.amountLabel al_alignSuperVerticalCenter];
+//        [self.amountLabel sizeToFit];
         
         // 图标
-        self.customImageView = [[UIImageView alloc] init];
+        self.customImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         self.customImageView.image = [self selectNormalPicture];
-        [self.customImageView sizeToFit];
-        [self.customImageView al_setSize:self.customImageView.frame.size];
         [self addSubview:self.customImageView];
         [self.customImageView al_layLeftOf:self.amountLabel distance:CustomImageViewRightMargin];
         [self.customImageView al_alignSuperVerticalCenter];
+//        [self.customImageView sizeToFit];
         
         self.amountLabel.text = @"0";
         [self reSetResponseButtonWidth];
@@ -49,7 +46,9 @@
 - (void)reSetResponseButtonWidth {
     
     [self.amountLabel sizeToFit];
-    [self al_setSize:CGSizeMake(self.amountLabel.finalWidth + CustomImageViewRightMargin + self.customImageView.frame.size.width, ResponseButtonHeight)];
+    [self.customImageView sizeToFit];
+
+    [self al_setSize:CGSizeMake(self.amountLabel.finalWidth + CustomImageViewRightMargin + self.customImageView.frame.size.width, CellFooterHeight)];
 }
 
 - (UIImage *)selectNormalPicture {

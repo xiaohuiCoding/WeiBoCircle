@@ -21,19 +21,31 @@
 
 - (void)initSubviews {
     
+    UIView *leftView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self addSubview:leftView];
+    [leftView al_alignSuperLeft:0];
+    [leftView al_alignSuperUpon:0];
+    [leftView al_setSize:CGSizeMake(DSWidth / 2, CellFooterHeight)];
+    
+    UIView *rightView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self addSubview:rightView];
+    [rightView al_alignSuperLeft:DSWidth / 2];
+    [rightView al_alignSuperUpon:0];
+    [rightView al_setSize:CGSizeMake(DSWidth / 2, CellFooterHeight)];
+    
     // 点赞按钮
     self.likeButton = [[CellResponseButton alloc] initWithFrame:CGRectZero pictureType:Like];
     [self.likeButton addTarget:self action:@selector(thumbUp) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:self.likeButton];
-    [self.likeButton al_alignSuperRight:10];
+    [rightView addSubview:self.likeButton];
+    [self.likeButton al_alignSuperHorizontalCenter];
     [self.likeButton al_alignSuperVerticalCenter];
     
     // 评论按钮
     self.commentButton = [[CellResponseButton alloc] initWithFrame:CGRectZero pictureType:Comment];
     [self.commentButton addTarget:self action:@selector(writeComment) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:self.commentButton];
+    [leftView addSubview:self.commentButton];
+    [self.commentButton al_alignSuperHorizontalCenter];
     [self.commentButton al_alignSuperVerticalCenter];
-    [self.commentButton al_layLeftOf:self.likeButton distance:100];
 }
 
 - (void)setIsLike:(BOOL)isLike {
@@ -50,7 +62,7 @@
 - (void)updateFooter {
     
     self.isLike = YES;
-    self.amount = 0;
+    self.amount = 999;
 }
 
 - (void)thumbUp {

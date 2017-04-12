@@ -75,6 +75,7 @@
 		4BB12FD01E9E0BCF002042D2 /* like_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "like_icon@3x.png"; sourceTree = "<group>"; };
 		4BB12FD11E9E0BCF002042D2 /* Talk_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Talk_icon@2x.png"; sourceTree = "<group>"; };
 		4BB12FD21E9E0BCF002042D2 /* Talk_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Talk_icon@3x.png"; sourceTree = "<group>"; };
+		4BB12FD91E9E3CB1002042D2 /* macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macro.h; sourceTree = "<group>"; };
 		4BB73C0C1E9B2203001CBB33 /* WeiBoCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiBoCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BB73C101E9B2203001CBB33 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4BB73C121E9B2203001CBB33 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -203,6 +204,7 @@
 				4BB73C201E9B2203001CBB33 /* Info.plist */,
 				4BB73C0F1E9B2203001CBB33 /* Supporting Files */,
 				4BB73C651E9B225F001CBB33 /* PrefixHeader.pch */,
+				4BB12FD91E9E3CB1002042D2 /* macro.h */,
 			);
 			path = WeiBoCircle;
 			sourceTree = "<group>";
