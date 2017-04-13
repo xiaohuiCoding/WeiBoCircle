@@ -3,15 +3,19 @@ PODS:
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
+  - ZFPlayer-MoreModel (2.1.2):
+    - Masonry
 
 DEPENDENCIES:
   - Masonry (~> 1.0.0)
   - SDWebImage (~> 3.7.6)
+  - ZFPlayer-MoreModel (~> 2.1.2)
 
 SPEC CHECKSUMS:
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  ZFPlayer-MoreModel: 54a40d845dd3a530d44c73d1799658aae7cc8c7a
 
-PODFILE CHECKSUM: d8fcaee78edd58a3c30b626df7a0f6a7f56a6248
+PODFILE CHECKSUM: 3734f5e7f98d0e26c36022e918b6570668f9e0fe
 
 COCOAPODS: 1.1.1

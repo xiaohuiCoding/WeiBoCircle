@@ -24,31 +24,38 @@
 - (void)initSubviews {
     
     // header
-    self.cellHeader = [[CellHeader alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, CellHeaderHeight)];
+    self.cellHeader = [[CellHeader alloc] initWithFrame:CGRectMake(0, 0, DSWidth, CellHeaderHeight)];
     [self addSubview:self.cellHeader];
     
-    // seperator line
-    UIView *seperatorLineView = [[UIView alloc] initWithFrame:CGRectZero];
-    seperatorLineView.backgroundColor = [UIColor lightGrayColor];
-    [self addSubview:seperatorLineView];
-    [seperatorLineView al_alignSuperLeft:0];
-    [seperatorLineView al_layBelowOf:self.cellHeader distance:0];
-    [seperatorLineView al_setSize:CGSizeMake(DSWidth, SeperatorLineViewHeight)];
+    // top separate view
+    UIView *topSeparateView = [[UIView alloc] initWithFrame:CGRectZero];
+    topSeparateView.backgroundColor = [UIColor lightGrayColor];
+    [self addSubview:topSeparateView];
+    [topSeparateView al_alignSuperLeft:0];
+    [topSeparateView al_layBelowOf:self.cellHeader distance:0];
+    [topSeparateView al_setSize:CGSizeMake(DSWidth, SeperatorLineViewHeight)];
+    
+    // video content
+    self.cellVideoContent = [[CellVideoContent alloc] initWithFrame:CGRectZero];
+    [self addSubview:self.cellVideoContent];
+    [self.cellVideoContent al_alignSuperHorizontalCenter];
+    [self.cellVideoContent al_layBelowOf:self.cellHeader distance:0];
+    [self.cellVideoContent al_setSize:CGSizeMake(DSWidth, CellVideoContentHeight)];
     
     // footer
     self.cellFooter = [[CellFooter alloc] initWithFrame:CGRectZero];
     [self addSubview:self.cellFooter];
     [self.cellFooter al_alignSuperLeft:0];
-    [self.cellFooter al_layBelowOf:seperatorLineView distance:0];
+    [self.cellFooter al_layBelowOf:self.cellVideoContent distance:0];
     [self.cellFooter al_setSize:CGSizeMake(DSWidth, CellFooterHeight)];
     
-    // bottom view
-    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectZero];
-    bottomView.backgroundColor = [UIColor lightGrayColor];
-    [self addSubview:bottomView];
-    [bottomView al_alignSuperLeft:0];
-    [bottomView al_layBelowOf:self.cellFooter distance:0];
-    [bottomView al_setSize:CGSizeMake(DSWidth, SeperatorViewHeight)];
+    // bottom separate view
+    UIView *bottomSeparateView = [[UIView alloc] initWithFrame:CGRectZero];
+    bottomSeparateView.backgroundColor = [UIColor lightGrayColor];
+    [self addSubview:bottomSeparateView];
+    [bottomSeparateView al_alignSuperLeft:0];
+    [bottomSeparateView al_layBelowOf:self.cellFooter distance:0];
+    [bottomSeparateView al_setSize:CGSizeMake(DSWidth, SeperatorViewHeight)];
 }
 
 - (void)updateCellWithModel:(BaseModel *)baseModel {

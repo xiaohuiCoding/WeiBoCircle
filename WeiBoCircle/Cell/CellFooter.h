@@ -21,7 +21,8 @@ typedef void (^CommentButtonClicked)();
 @property (nonatomic, copy) CommentButtonClicked commentButtonClicked;
 
 @property (nonatomic, assign) BOOL isLike;
-@property (nonatomic, assign) int  amount;
+@property (nonatomic, assign) int  likeAmount;
+@property (nonatomic, assign) int  commentAmount;
 
 - (void)updateFooter;
 

@@ -29,7 +29,7 @@
     
     UIView *rightView = [[UIView alloc] initWithFrame:CGRectZero];
     [self addSubview:rightView];
-    [rightView al_alignSuperLeft:DSWidth / 2];
+    [rightView al_layRightOf:leftView distance:0];
     [rightView al_alignSuperUpon:0];
     [rightView al_setSize:CGSizeMake(DSWidth / 2, CellFooterHeight)];
     
@@ -46,6 +46,14 @@
     [leftView addSubview:self.commentButton];
     [self.commentButton al_alignSuperHorizontalCenter];
     [self.commentButton al_alignSuperVerticalCenter];
+    
+    // middle separate view
+    UIView *middleSeparateView = [[UIView alloc] initWithFrame:CGRectZero];
+    middleSeparateView.backgroundColor = [UIColor lightGrayColor];
+    [self addSubview:middleSeparateView];
+    [middleSeparateView al_alignSuperHorizontalCenter];
+    [middleSeparateView al_alignSuperVerticalCenter];
+    [middleSeparateView al_setSize:CGSizeMake(1, 20)];
 }
 
 - (void)setIsLike:(BOOL)isLike {
@@ -53,17 +61,24 @@
     self.likeButton.isLike = isLike;
 }
 
-- (void)setAmount:(int)amount {
-    
-    self.likeButton.amount = amount;
-    self.commentButton.amount = amount;
+- (void)setLikeAmount:(int)likeAmount {
+    self.likeButton.amount = likeAmount;
+}
+
+- (void)setCommentAmount:(int)commentAmount {
+    self.commentButton.amount = commentAmount;
 }
 
 - (void)updateFooter {
     
     self.isLike = YES;
-    self.amount = 999;
+    self.likeAmount = 999;
+    self.commentAmount = 666;
 }
+
+//- (void)updateFooter {
+//    
+//}
 
 - (void)thumbUp {
     

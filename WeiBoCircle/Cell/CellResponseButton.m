@@ -27,7 +27,6 @@
         [self addSubview:self.amountLabel];
         [self.amountLabel al_alignSuperRight:0];
         [self.amountLabel al_alignSuperVerticalCenter];
-//        [self.amountLabel sizeToFit];
         
         // 图标
         self.customImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
@@ -35,7 +34,6 @@
         [self addSubview:self.customImageView];
         [self.customImageView al_layLeftOf:self.amountLabel distance:CustomImageViewRightMargin];
         [self.customImageView al_alignSuperVerticalCenter];
-//        [self.customImageView sizeToFit];
         
         self.amountLabel.text = @"0";
         [self reSetResponseButtonWidth];
@@ -45,10 +43,10 @@
 
 - (void)reSetResponseButtonWidth {
     
-    [self.amountLabel sizeToFit];
-    [self.customImageView sizeToFit];
-
-    [self al_setSize:CGSizeMake(self.amountLabel.finalWidth + CustomImageViewRightMargin + self.customImageView.frame.size.width, CellFooterHeight)];
+//    [self.amountLabel sizeToFit];
+//    [self.customImageView sizeToFit];
+//
+//    [self al_setSize:CGSizeMake(self.amountLabel.finalWidth + CustomImageViewRightMargin + self.customImageView.frame.size.width, CellFooterHeight)];
 }
 
 - (UIImage *)selectNormalPicture {

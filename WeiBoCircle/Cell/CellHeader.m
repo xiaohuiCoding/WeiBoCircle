@@ -35,7 +35,7 @@ typedef NS_ENUM(NSInteger, PictureType) {
     self.collect = NO; //
     
     // 头像
-    self.avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, AvatarWidth, AvatarWidth)];
+    self.avatarImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.avatarImageView.image = [self selectPictureWithType:DefaultAvatar];
     self.avatarImageView.layer.cornerRadius = 10;
     self.avatarImageView.layer.masksToBounds = YES;
@@ -45,7 +45,6 @@ typedef NS_ENUM(NSInteger, PictureType) {
     [self addSubview:self.avatarImageView];
     [self.avatarImageView al_alignSuperLeft:AvatarLeftMargin];
     [self.avatarImageView al_alignSuperVerticalCenter];
-    [self.avatarImageView al_setSize:self.avatarImageView.frame.size];
     
     // 名字
     UILabel *lb1 = [[UILabel alloc] init];
@@ -53,21 +52,21 @@ typedef NS_ENUM(NSInteger, PictureType) {
     lb1.text = @"测";
     
     UILabel *lb2 = [[UILabel alloc] init];
-    lb2.font = [UIFont systemFontOfSize:11.0];
+    lb2.font = [UIFont systemFontOfSize:12.0];
     lb2.text = @"测";
     
     CGFloat nameLabelTopMargin = (CellHeaderHeight - lb1.finalHeight - CommitTimeTopMargin - lb2.finalHeight) / 2;
     
-    self.nameLabel = [[UILabel alloc] init];
+    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.nameLabel.font = [UIFont systemFontOfSize:14.0];
     [self addSubview:self.nameLabel];
     [self.nameLabel al_layRightOf:self.avatarImageView distance:AvatarLeftMargin];
     [self.nameLabel al_alignSuperUpon:nameLabelTopMargin];
-    [self.nameLabel al_setMaxWidth:[[UIScreen mainScreen] bounds].size.width / 2];
+    [self.nameLabel al_setMaxWidth:DSWidth / 2]; // 设置最大宽度
     
     // 提交时间
-    self.commitTimeLabel = [[UILabel alloc] init];
-    self.commitTimeLabel.font = [UIFont systemFontOfSize:11.0];
+    self.commitTimeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.commitTimeLabel.font = [UIFont systemFontOfSize:12.0];
     self.commitTimeLabel.textColor = [UIColor lightGrayColor];
     [self addSubview:self.commitTimeLabel];
     [self.commitTimeLabel al_layRightOf:self.avatarImageView distance:AvatarLeftMargin];
@@ -75,7 +74,6 @@ typedef NS_ENUM(NSInteger, PictureType) {
     
     // 收藏
     self.collectButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.collectButton sizeToFit];
     [self.collectButton addTarget:self action:@selector(collectBlog) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.collectButton];
     [self.collectButton al_alignSuperRight:CommitTimeTopMargin];

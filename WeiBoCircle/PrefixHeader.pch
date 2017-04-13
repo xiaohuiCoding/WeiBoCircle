@@ -15,6 +15,7 @@
 #import "macro.h"
 
 #import "UIImageView+WebCache.h"
+#import "ZFPlayer.h"
 
 #import "UIView+AutolayoutSetter.h"
 #import "UILabel+SomeCalculate.h"
