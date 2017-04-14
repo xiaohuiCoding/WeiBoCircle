@@ -8,11 +8,6 @@
 
 #import "CellHeader.h"
 
-#define CellHeaderHeight    80
-#define AvatarLeftMargin    20
-#define AvatarWidth         60
-#define CommitTimeTopMargin 10
-
 typedef NS_ENUM(NSInteger, PictureType) {
     DefaultAvatar = 0, // 默认头像
     UnCollect,         // 未收藏
@@ -43,8 +38,9 @@ typedef NS_ENUM(NSInteger, PictureType) {
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showUserHomePage)];
     [self.avatarImageView addGestureRecognizer:tap];
     [self addSubview:self.avatarImageView];
-    [self.avatarImageView al_alignSuperLeft:AvatarLeftMargin];
+    [self.avatarImageView al_alignSuperLeft:AvatarImageViewLeftMargin];
     [self.avatarImageView al_alignSuperVerticalCenter];
+    [self.avatarImageView al_setSize:CGSizeMake(AvatarImageViewWidth, AvatarImageViewWidth)];
     
     // 名字
     UILabel *lb1 = [[UILabel alloc] init];
@@ -55,12 +51,12 @@ typedef NS_ENUM(NSInteger, PictureType) {
     lb2.font = [UIFont systemFontOfSize:12.0];
     lb2.text = @"测";
     
-    CGFloat nameLabelTopMargin = (CellHeaderHeight - lb1.finalHeight - CommitTimeTopMargin - lb2.finalHeight) / 2;
+    CGFloat nameLabelTopMargin = (CellHeaderHeight - lb1.finalHeight - CommitTimeLabelTopMargin - lb2.finalHeight) / 2;
     
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.nameLabel.font = [UIFont systemFontOfSize:14.0];
     [self addSubview:self.nameLabel];
-    [self.nameLabel al_layRightOf:self.avatarImageView distance:AvatarLeftMargin];
+    [self.nameLabel al_layRightOf:self.avatarImageView distance:AvatarImageViewLeftMargin];
     [self.nameLabel al_alignSuperUpon:nameLabelTopMargin];
     [self.nameLabel al_setMaxWidth:DSWidth / 2]; // 设置最大宽度
     
@@ -69,14 +65,14 @@ typedef NS_ENUM(NSInteger, PictureType) {
     self.commitTimeLabel.font = [UIFont systemFontOfSize:12.0];
     self.commitTimeLabel.textColor = [UIColor lightGrayColor];
     [self addSubview:self.commitTimeLabel];
-    [self.commitTimeLabel al_layRightOf:self.avatarImageView distance:AvatarLeftMargin];
-    [self.commitTimeLabel al_layBelowOf:self.nameLabel distance:CommitTimeTopMargin];
+    [self.commitTimeLabel al_layRightOf:self.avatarImageView distance:AvatarImageViewLeftMargin];
+    [self.commitTimeLabel al_layBelowOf:self.nameLabel distance:CommitTimeLabelTopMargin];
     
     // 收藏
     self.collectButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.collectButton addTarget:self action:@selector(collectBlog) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.collectButton];
-    [self.collectButton al_alignSuperRight:CommitTimeTopMargin];
+    [self.collectButton al_alignSuperRight:CommitTimeLabelTopMargin];
     [self.collectButton al_alignSuperVerticalCenter];
 }
 

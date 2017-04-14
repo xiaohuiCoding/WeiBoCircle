@@ -21,39 +21,53 @@
 
 - (void)initSubviews {
     
-    UIView *leftView = [[UIView alloc] initWithFrame:CGRectZero];
-    [self addSubview:leftView];
-    [leftView al_alignSuperLeft:0];
-    [leftView al_alignSuperUpon:0];
-    [leftView al_setSize:CGSizeMake(DSWidth / 2, CellFooterHeight)];
+    UIView *leftFunctionView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self addSubview:leftFunctionView];
+    [leftFunctionView al_alignSuperLeft:0];
+    [leftFunctionView al_alignSuperUpon:0];
+    [leftFunctionView al_setSize:CGSizeMake(DSWidth / 2, FunctionViewHeight)];
     
-    UIView *rightView = [[UIView alloc] initWithFrame:CGRectZero];
-    [self addSubview:rightView];
-    [rightView al_layRightOf:leftView distance:0];
-    [rightView al_alignSuperUpon:0];
-    [rightView al_setSize:CGSizeMake(DSWidth / 2, CellFooterHeight)];
+    UIView *rightFunctionView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self addSubview:rightFunctionView];
+    [rightFunctionView al_layRightOf:leftFunctionView distance:0];
+    [rightFunctionView al_alignSuperUpon:0];
+    [rightFunctionView al_setSize:CGSizeMake(DSWidth / 2, FunctionViewHeight)];
     
-    // 点赞按钮
-    self.likeButton = [[CellResponseButton alloc] initWithFrame:CGRectZero pictureType:Like];
-    [self.likeButton addTarget:self action:@selector(thumbUp) forControlEvents:UIControlEventTouchUpInside];
-    [rightView addSubview:self.likeButton];
-    [self.likeButton al_alignSuperHorizontalCenter];
-    [self.likeButton al_alignSuperVerticalCenter];
-    
-    // 评论按钮
     self.commentButton = [[CellResponseButton alloc] initWithFrame:CGRectZero pictureType:Comment];
     [self.commentButton addTarget:self action:@selector(writeComment) forControlEvents:UIControlEventTouchUpInside];
-    [leftView addSubview:self.commentButton];
+    [leftFunctionView addSubview:self.commentButton];
     [self.commentButton al_alignSuperHorizontalCenter];
     [self.commentButton al_alignSuperVerticalCenter];
     
-    // middle separate view
-    UIView *middleSeparateView = [[UIView alloc] initWithFrame:CGRectZero];
-    middleSeparateView.backgroundColor = [UIColor lightGrayColor];
-    [self addSubview:middleSeparateView];
-    [middleSeparateView al_alignSuperHorizontalCenter];
-    [middleSeparateView al_alignSuperVerticalCenter];
-    [middleSeparateView al_setSize:CGSizeMake(1, 20)];
+    self.likeButton = [[CellResponseButton alloc] initWithFrame:CGRectZero pictureType:Like];
+    [self.likeButton addTarget:self action:@selector(thumbUp) forControlEvents:UIControlEventTouchUpInside];
+    [rightFunctionView addSubview:self.likeButton];
+    [self.likeButton al_alignSuperHorizontalCenter];
+    [self.likeButton al_alignSuperVerticalCenter];
+    
+    // separate line between function views
+    UIView *separateLine = [[UIView alloc] initWithFrame:CGRectZero];
+    separateLine.backgroundColor = [UIColor lightGrayColor];
+    [rightFunctionView addSubview:separateLine];
+    [separateLine al_alignSuperLeft:0];
+    [separateLine al_alignSuperVerticalCenter];
+    [separateLine al_setSize:CGSizeMake(1, SeparateLineHeight)];
+    
+    // top separate view
+    UIView *topLine = [[UIView alloc] initWithFrame:CGRectZero];
+    topLine.backgroundColor = [UIColor lightGrayColor];
+    [self addSubview:topLine];
+    [topLine al_alignSuperLeft:0];
+    [topLine al_alignSuperUpon:0];
+    [topLine al_setSize:CGSizeMake(DSWidth, TopLineHeight)];
+    
+    // bottom line under function views
+    UIView *bottomLine = [[UIView alloc] initWithFrame:CGRectZero];
+    bottomLine.backgroundColor = [UIColor lightGrayColor];
+    [self addSubview:bottomLine];
+    [bottomLine al_alignSuperLeft:0];
+    [bottomLine al_layBelowOf:leftFunctionView distance:0];
+    [bottomLine al_setSize:CGSizeMake(DSWidth, BottomLineHeight)];
 }
 
 - (void)setIsLike:(BOOL)isLike {

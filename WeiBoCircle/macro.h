@@ -13,23 +13,21 @@
 #define DSWidth [[UIScreen mainScreen] bounds].size.width
 #define DSHeight [[UIScreen mainScreen] bounds].size.height
 
+// cell header
+#define CellHeaderHeight          60
+#define AvatarImageViewLeftMargin 15
+#define AvatarImageViewWidth      50
+#define CommitTimeLabelTopMargin  5
 
+// cell content
+#define CellVideoContentHeight 200
 
-// cell header高度
-#define CellHeaderHeight 80
-
-#define SeperatorLineViewHeight 1
-
-// cell video content高度
-#define CellVideoContentHeight 180
-
-// cell footer上图标与数量的间隔
-#define CustomImageViewRightMargin 5
-
-// cell footer高度
-#define CellFooterHeight 40
-
-// cell间分隔条高度
-#define SeperatorViewHeight 10
+// cell footer
+#define CellFooterHeight           50
+#define FunctionViewHeight         40
+#define CustomImageViewRightMargin 10
+#define SeparateLineHeight         20
+#define TopLineHeight              1
+#define BottomLineHeight           10
 
 #endif /* macro_h */

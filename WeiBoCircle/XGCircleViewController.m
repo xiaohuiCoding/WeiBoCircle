@@ -12,7 +12,7 @@
 #import "VideoModel.h"
 
 #define SimpleBlogCellIdentifier @"simple"
-#define VideoBlogCellIdentifier  @"video"
+//#define VideoBlogCellIdentifier  @"video"
 
 @interface XGCircleViewController ()<ZFPlayerDelegate>
 
@@ -63,7 +63,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 310;
+    return CellHeaderHeight + CellVideoContentHeight + CellFooterHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

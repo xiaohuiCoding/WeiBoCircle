@@ -27,14 +27,6 @@
     self.cellHeader = [[CellHeader alloc] initWithFrame:CGRectMake(0, 0, DSWidth, CellHeaderHeight)];
     [self addSubview:self.cellHeader];
     
-    // top separate view
-    UIView *topSeparateView = [[UIView alloc] initWithFrame:CGRectZero];
-    topSeparateView.backgroundColor = [UIColor lightGrayColor];
-    [self addSubview:topSeparateView];
-    [topSeparateView al_alignSuperLeft:0];
-    [topSeparateView al_layBelowOf:self.cellHeader distance:0];
-    [topSeparateView al_setSize:CGSizeMake(DSWidth, SeperatorLineViewHeight)];
-    
     // video content
     self.cellVideoContent = [[CellVideoContent alloc] initWithFrame:CGRectZero];
     [self addSubview:self.cellVideoContent];
@@ -48,14 +40,6 @@
     [self.cellFooter al_alignSuperLeft:0];
     [self.cellFooter al_layBelowOf:self.cellVideoContent distance:0];
     [self.cellFooter al_setSize:CGSizeMake(DSWidth, CellFooterHeight)];
-    
-    // bottom separate view
-    UIView *bottomSeparateView = [[UIView alloc] initWithFrame:CGRectZero];
-    bottomSeparateView.backgroundColor = [UIColor lightGrayColor];
-    [self addSubview:bottomSeparateView];
-    [bottomSeparateView al_alignSuperLeft:0];
-    [bottomSeparateView al_layBelowOf:self.cellFooter distance:0];
-    [bottomSeparateView al_setSize:CGSizeMake(DSWidth, SeperatorViewHeight)];
 }
 
 - (void)updateCellWithModel:(BaseModel *)baseModel {
