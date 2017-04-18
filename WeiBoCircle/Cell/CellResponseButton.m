@@ -43,10 +43,10 @@
 
 - (void)reSetResponseButtonWidth {
     
-//    [self.amountLabel sizeToFit];
-//    [self.customImageView sizeToFit];
-//
-//    [self al_setSize:CGSizeMake(self.amountLabel.finalWidth + CustomImageViewRightMargin + self.customImageView.frame.size.width, CellFooterHeight)];
+    [self.amountLabel sizeToFit];
+    [self.customImageView sizeToFit];
+
+    [self al_setSize:CGSizeMake(self.amountLabel.finalWidth + CustomImageViewRightMargin + self.customImageView.frame.size.width, CellFooterHeight)];
 }
 
 - (UIImage *)selectNormalPicture {
